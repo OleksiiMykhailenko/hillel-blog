@@ -1,22 +1,36 @@
-<?php
-        @extends('layouts.layout')
-@section('content')
+@extends('layouts.layout')
 
-    <form action="">
-    <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title">
-    </div>
+@section('content')
+    <h2>Publish a post:</h2>
+
+    <form action="/post" method="post">
+        {{csrf_field()}}
+        <div class="form-group">
+         <label for="title">Title:</label>
+            <input class="form-control" type="text" name="title" id="title">
+        </div>
+
+        <div class="form-group">
+            <label for="alias">Alias:</label>
+            <input class="form-control" type="text" name="alias" id="alias">
+        </div>
 
         <div class="form-group">
             <label for="intro">Intro:</label>
-            <textarea type="text" name="intro" id="intro"></textarea>
+            <textarea class="form-control" type="text" name="intro" id="intro"></textarea>
         </div>
 
         <div class="form-group">
             <label for="body">Body:</label>
-            <textarea type="text" name="body" id="body"></textarea>
+            <textarea class="form-control" type="text" name="body" id="body"></textarea>
         </div>
+
+        <div class="form-group">
+            <button class="btn btn-dark" type="submit">Post</button>
+        </div>
+
+    @include('layouts.error')
+
     </form>
 
-    @endsection
+@endsection
